@@ -37,4 +37,9 @@ Route::middleware('api')->group(function () {
     Route::post('/delete_alumno', [Controller::class, 'DeleteAlumno'])->name('delete_alumno');
     Route::post('/delete_beca', [Controller::class, 'DeleteBeca'])->name('delete_beca');
     Route::post('/delete_requisito', [Controller::class, 'DeleteReq'])->name('delete_requisito');
+
+    /* nuevas rel */
+    Route::post('/new_becas_requisitos', [Controller::class, 'CreateReqBecas'])->name('new_becas_requisitos');
+    Route::post('/new_estudiantes_materias', [Controller::class, 'CreateMatEst'])->name('new_estudiantes_materias');
+
 });

@@ -70,7 +70,7 @@ class Controller extends BaseController
     {
         try {
             $m = (new FilterProy)->filterRequisitosP($r);
-            
+
             return response()->json(['status' => 200, 'response' => $m]);
         } catch (Exception $e) {
             return response()->json(['status' => 500, 'response' => $e]);
@@ -248,9 +248,42 @@ class Controller extends BaseController
             $b = $r->id ? EstudBecas::find($r->id) : new EstudBecas();
             $b->id_beca = $r->id_beca;
             $b->id_estudiante = $r->id_estudiante;
-            $b->fecha_inicio = $r->fecha_inicio;
+            $b->fecha_inicio = $r->created_at;
             $b->status = 1;
             $b->save();
+            return response()->json(['status' => 200, 'response' => $b]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 500, 'response' => $e]);
+        }
+    }
+
+    public function DeleteBecReq(Request $r)
+    {
+        try {
+            $b =  BecasReq::find($r->id);
+            $b->delete();
+            return response()->json(['status' => 200, 'response' => $b]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 500, 'response' => $e]);
+        }
+    }
+
+    public function DeleteEstBecas(Request $r)
+    {
+        try {
+            $b =  EstudBecas::find($r->id);
+            $b->delete();
+            return response()->json(['status' => 200, 'response' => $b]);
+        } catch (Exception $e) {
+            return response()->json(['status' => 500, 'response' => $e]);
+        }
+    }
+
+    public function DeleteEstMat(Request $r)
+    {
+        try {
+            $b =  EstudMaterias::find($r->id);
+            $b->delete();
             return response()->json(['status' => 200, 'response' => $b]);
         } catch (Exception $e) {
             return response()->json(['status' => 500, 'response' => $e]);
