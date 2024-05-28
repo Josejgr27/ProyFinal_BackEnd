@@ -249,7 +249,7 @@ class Controller extends BaseController
             $b->id_beca = $r->id_beca;
             $b->id_estudiante = $r->id_estudiante;
             $b->fecha_inicio = $r->created_at;
-            $b->status = 1;
+            $b->status = $r->status;
             $b->save();
             return response()->json(['status' => 200, 'response' => $b]);
         } catch (Exception $e) {

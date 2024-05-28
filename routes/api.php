@@ -41,5 +41,6 @@ Route::middleware('api')->group(function () {
     /* nuevas rel */
     Route::post('/new_becas_requisitos', [Controller::class, 'CreateReqBecas'])->name('new_becas_requisitos');
     Route::post('/new_estudiantes_materias', [Controller::class, 'CreateMatEst'])->name('new_estudiantes_materias');
+    Route::post('/new_estudiantes_becas', [Controller::class, 'CreateBecEst'])->name('new_estudiantes_becas');
 
 });
